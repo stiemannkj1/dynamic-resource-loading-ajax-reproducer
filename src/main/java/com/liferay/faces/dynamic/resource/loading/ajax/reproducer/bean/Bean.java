@@ -1,0 +1,60 @@
+/**
+ * Copyright (c) 2000-2016 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+package com.liferay.faces.dynamic.resource.loading.ajax.reproducer.bean;
+
+import javax.faces.application.Application;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import com.liferay.faces.dynamic.resource.loading.ajax.reproducer.component.ExampleComponent;
+
+
+/**
+ * @author  Kyle Stiemann
+ */
+@ManagedBean
+@ViewScoped
+public class Bean {
+
+	private String include = "includeText.xhtml";
+
+	public void addExampleComponentToView(ActionEvent actionEvent) {
+
+		Application application = FacesContext.getCurrentInstance().getApplication();
+		UIComponent exampleComponent = application.createComponent(ExampleComponent.COMPONENT_TYPE);
+		UIComponent parent = actionEvent.getComponent().getParent();
+		parent.getChildren().add(exampleComponent);
+	}
+
+	public String getInclude() {
+		return include;
+	}
+
+	public void setInclude(String include) {
+		this.include = include;
+	}
+
+	public void toggleInclude() {
+
+		if ("includeText.xhtml".equals(getInclude())) {
+			setInclude("includeExample.xhtml");
+		}
+		else {
+			setInclude("includeText.xhtml");
+		}
+	}
+}
