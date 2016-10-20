@@ -13,6 +13,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
 				<configuration>
 					<webResources>
 						<resource>
@@ -37,31 +38,33 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<jsf.impl>Mojarra 2.2.13</jsf.impl>
+				<jsf.version>2.2.13</jsf.version>
+				<jsf.impl>Mojarra ${jsf.version}</jsf.impl>
 			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>org.glassfish</groupId>
 					<artifactId>javax.faces</artifactId>
-					<version>2.2.13</version>
+					<version>${jsf.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
 		<profile>
 			<id>myfaces</id>
 			<properties>
-				<jsf.impl>Myfaces 2.2.10</jsf.impl>
+				<jsf.version>2.2.10</jsf.version>
+				<jsf.impl>Myfaces ${jsf.version}</jsf.impl>
 			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-api</artifactId>
-					<version>2.2.10</version>
+					<version>${jsf.version}</version>
 				</dependency>
 				<dependency>
 					<groupId>org.apache.myfaces.core</groupId>
 					<artifactId>myfaces-impl</artifactId>
-					<version>2.2.10</version>
+					<version>${jsf.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>

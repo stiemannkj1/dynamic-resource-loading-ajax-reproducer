@@ -8,7 +8,7 @@ This project is a reproducer for [JAVASERVERFACES_SPEC_PUBLIC-1423](https://java
 
         git clone https://github.com/stiemannkj1/dynamic-resource-loading-ajax-reproducer.git
 
-2. Build the project with maven (use `mvn clean install -P myfaces` to use myfaces instead of mojarra):
+2. Build the project with maven. You can use the `myfaces` profile to use myfaces instead of mojarra (for example: `-P myfaces`). You can use the `jsf.version` property to change the version of JSF being used (for example: `-Djsf.verison=2.3.0-m06`).
 
         cd dynamic-resource-loading-ajax-reproducer && mvn clean install
 
