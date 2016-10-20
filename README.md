@@ -1,8 +1,6 @@
 # [JAVASERVERFACES_SPEC_PUBLIC-1423](https://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-1423) Reproducer
 
-This project is a reproducer for
-[JAVASERVERFACES_SPEC_PUBLIC-1423](https://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-1423): Dynamic resource
-loading in ajax requests
+This project is a reproducer for [JAVASERVERFACES_SPEC_PUBLIC-1423](https://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-1423): Dynamic resource loading in ajax requests
 
 ## Steps to reproduce:
 
@@ -18,11 +16,9 @@ loading in ajax requests
 
         cp target/dynamic-resource-loading-ajax-reproducer*.war $TOMCAT_HOME/webapps/
 
-### Steps to reproduce by programmatically (dynamically) adding a component with a `@ResourceDepedency` to the view via
-java:
+### Steps to reproduce by programmatically (dynamically) adding a component with a `@ResourceDepedency` to the view via java:
 
-1. Verify that the **`example.js`** resource dependency is loaded when the `<example:component rendered="false" />` is
-included in the facelet view:
+1. Verify that the **`example.js`** resource dependency is loaded when the `<example:component rendered="false" />` is included in the facelet view:
 
     1. Navigate to **`static.faces`** in the browser:
 
@@ -36,15 +32,13 @@ included in the facelet view:
 
 3. Click the *Add Example Component Via Ajax* button.
 
-If the feature does not exist, "**example:component rendered**" will appear, but the alert showing that **`example.js`**
-was loaded will not appear.
+If the feature does not exist, "**example:component rendered**" will appear, but the alert showing that **`example.js`** was loaded will not appear.
 
 If the feature exists then an alert with the text "example.js resource loaded" will appear.
 
 ### Steps to reproduce by programmatically (dynamically) changing the `src` attribute of a `ui:include` tag:
 
-1. Verify that the **`example.js`** resource dependency is loaded when the `<example:component />` is included
-statically:
+1. Verify that the **`example.js`** resource dependency is loaded when the `<example:component />` is included statically:
 
     1. Navigate to **`staticInclude.faces`** in the browser:
 
@@ -58,7 +52,6 @@ statically:
 
 3. Click the *Toggle Include* button.
 
-If the feature does not exist, "**example:component rendered**" will appear, but the alert showing that **`example.js`**
-was loaded will not appear.
+If the feature does not exist, "**example:component rendered**" will appear, but the alert showing that **`example.js`** was loaded will not appear.
 
 If the feature exists then an alert with the text "example.js resource loaded" will appear.
