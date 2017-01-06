@@ -38,7 +38,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<jsf.version>2.2.13</jsf.version>
+				<jsf.version>2.3.0-m09-SNAPSHOT</jsf.version>
 				<jsf.impl>Mojarra ${jsf.version}</jsf.impl>
 			</properties>
 			<dependencies>
@@ -67,6 +67,80 @@
 					<version>${jsf.version}</version>
 				</dependency>
 			</dependencies>
+		</profile>
+		<profile>
+			<id>pluto-3_0</id>
+			<properties>
+				<jsf.version>2.3.0-m09-SNAPSHOT</jsf.version>
+				<jsf.impl>Mojarra ${jsf.version}</jsf.impl>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.glassfish</groupId>
+					<artifactId>javax.faces</artifactId>
+					<version>${jsf.version}</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.liferay.faces</groupId>
+					<artifactId>com.liferay.faces.bridge.impl</artifactId>
+					<version>6.0.0-SNAPSHOT</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<mkdir dir="${project.build.outputDirectory}/META-INF/services" />
+										<echo message="com.sun.faces.config.FacesInitializer"
+											  file="${project.build.outputDirectory}/META-INF/services/javax.servlet.ServletContainerInitializer" />
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webXml>${project.build.directory}/pluto-resources/web.xml</webXml>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.portals.pluto</groupId>
+						<artifactId>maven-pluto-plugin</artifactId>
+						<version>3.0-SNAPSHOT</version>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.portals.pluto</groupId>
+								<artifactId>pluto-util</artifactId>
+								<version>3.0-SNAPSHOT</version>
+								<scope>runtime</scope>
+							</dependency>
+						</dependencies>
+						<executions>
+							<execution>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>assemble</goal>
+								</goals>
+								<configuration>
+									<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>

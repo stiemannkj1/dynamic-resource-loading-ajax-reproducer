@@ -6,6 +6,9 @@
 	<h:head />
 	<h:body>
 		<h:outputText value="JSF_IMPL = &quot;#{initParam['JSF_IMPL']}&quot;" />
+		<br />
+		<h:link outcome="/dynamic.xhtml">/dynamic.xhtml</h:link>
+		<br />
 		<h:form>
 			<ui:include id="include" src="#{bean.include}" /><br />
 			<h:commandButton value="Toggle Include" actionListener="#{bean.toggleInclude}">
