@@ -34,8 +34,10 @@ public class Bean {
 
 	public void addExampleComponentToView(ActionEvent actionEvent) {
 
-		Application application = FacesContext.getCurrentInstance().getApplication();
-		UIComponent exampleComponent = application.createComponent(ExampleComponent.COMPONENT_TYPE);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		Application application = facesContext.getApplication();
+		UIComponent exampleComponent = application.createComponent(facesContext, ExampleComponent.COMPONENT_TYPE,
+				ExampleComponent.RENDERER_TYPE);
 		UIComponent parent = actionEvent.getComponent().getParent();
 		parent.getChildren().add(exampleComponent);
 	}
