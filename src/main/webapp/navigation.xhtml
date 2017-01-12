@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head />
+	<h:body>
+		<h:outputText value="JSF_IMPL = &quot;#{initParam['JSF_IMPL']}&quot;" />
+		<br />
+		<h:link outcome="/dynamic.xhtml">/dynamic.xhtml</h:link>
+		<br />
+		<h:link outcome="/dynamicInclude.xhtml">/dynamicInclude.xhtml</h:link>
+		<br />
+		<h:form>
+			<h:commandButton value="Navigate via Ajax" action="staticInclude.xhtml">
+				<f:ajax render="@form" />
+			</h:commandButton>
+		</h:form>
+	</h:body>
+</html>
+

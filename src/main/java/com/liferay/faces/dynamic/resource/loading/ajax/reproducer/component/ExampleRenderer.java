@@ -14,6 +14,7 @@
 package com.liferay.faces.dynamic.resource.loading.ajax.reproducer.component;
 
 import java.io.IOException;
+import javax.faces.application.ResourceDependencies;
 
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
@@ -26,7 +27,10 @@ import javax.faces.render.Renderer;
 /**
  * @author  Kyle Stiemann
  */
-@ResourceDependency(library = "example", name = "example.js")
+@ResourceDependencies({
+	@ResourceDependency(library = "example", name = "example.js"),
+	@ResourceDependency(library = "example", name = "example.css")
+})
 @FacesRenderer(componentFamily = ExampleComponent.COMPONENT_FAMILY, rendererType = ExampleComponent.RENDERER_TYPE)
 public class ExampleRenderer extends Renderer {
 
